@@ -5,6 +5,7 @@ body {
   justify-content: center;
   height: 100vh;
   margin: 0;
+  background-color: gray;
 }
 
 .container {
@@ -17,7 +18,19 @@ body {
 }
 
 #generatedSentence {
+  background-color: palevioletred;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
+
+color: rgb(4, 5, 5) ; 
+
+box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); 
+transition: box-shadow 0.3s ease; 
   font-size: 18px;
+  position: relative;
+   bottom : 160px; 
+   right : -400px
 }
 
 .custom-button {
