@@ -11,3 +11,15 @@ let sentences = [
 
 ];
  //random sentence from array , and display it in the html page 
+ function getRandomElementFromArray(arr) {
+    // Check if the array is not empty
+    if (arr.length === 0) {
+      return null; // Return null if the array is empty
+    }
+  
+    // Generate a random index within the array length
+    const randomIndex = Math.floor(Math.random() * arr.length);
+  
+    // Return the random element
+    return arr[randomIndex];
+  }
