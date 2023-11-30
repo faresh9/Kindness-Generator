@@ -1,7 +1,23 @@
+let typingInProgress = false;
+
+function getRandomElementFromArray(arr) {
+  if (arr.length === 0) {
+    return null;
+  }
+
+  const randomIndex = Math.floor(Math.random() * arr.length);
+  return arr[randomIndex];
+}
 
 function generateSentence() {
+  if (typingInProgress) {
+    // If typing is already in progress, do nothing
+    return;
+  }
 
-let sentences = [ 
+  typingInProgress = true;
+
+  let sentences = [ 
     "Give an unexpected compliment." , "Plant a tree.", "Let someone cut in front of you in line","Pay the toll for the car behind you.","Slow down so someone can merge in front of you in traffic.","Let someone else take that primo parking spot.","Give someone your seat on a crowded bus or subway.", "Put coins in an expired parking meter.","Give up your seat on a plane so other travelers can sit together.","Buy a warm meal for someone in need.","Help someone struggling to carry their grocery bags.","Stop to assist someone who looks lost.", "Offer to return a stranger's grocery cart to the front of the store.",
     "Donate flowers to a nursing home.", 
     "Hand out disposable water bottles to people working outside on a hot day.","Buy a gift card to hand to someone on your way out of the coffee shop.",
@@ -13,28 +29,39 @@ let sentences = [
     "Talk to a stranger at a party who looks like they don't know anyone.", "Smile at someone who looks sad."
 ];
 
-const generatedSentence = getRandomElementFromArray(sentences);
+  const generatedSentence = getRandomElementFromArray(sentences);
+  const sentenceElement = document.getElementById('generatedSentence');
+  sentenceElement.innerHTML = ''; // Clear the content
 
-const sentenceElement = document.getElementById('generatedSentence');
-sentenceElement.innerHTML = generatedSentence;
+  const machineElement = document.getElementById('machine');
 
-const machineElement = document.getElementById('machine');
+  // Apply the translation animation to move the machine to the left
+  machineElement.style.transform = 'translateX(-100%)';
 
-// Apply the translation animation to move the machine to the left
-machineElement.style.transform = 'translateX(-100%)';
+  // Reset the translation after a short delay
+  setTimeout(() => {
+    machineElement.style.transform = 'translateX(0)';
+  }, 500);
 
-// Reset the translation after a short delay
-setTimeout(() => {
-  machineElement.style.transform = 'translateX(0)';
-}, 500);
+  // Type out the sentence letter by letter with a delay
+  typeSentence(generatedSentence, sentenceElement, () => {
+    typingInProgress = false; // Reset the typing status after finishing
+  });
 }
 
-// Function to get a random element from an array (as provided in the previous examples)
-function getRandomElementFromArray(arr) {
-if (arr.length === 0) {
-  return null;
-}
+function typeSentence(sentence, targetElement, onComplete) {
+  const speed = 50; // Typing speed in milliseconds
+  let index = 0;
 
-const randomIndex = Math.floor(Math.random() * arr.length);
-return arr[randomIndex];
+  function type() {
+    if (index < sentence.length) {
+      targetElement.innerHTML += sentence.charAt(index);
+      index++;
+      setTimeout(type, speed);
+    } else {
+      onComplete(); // Call the onComplete callback when typing is complete
+    }
+  }
+
+  type(); // Start typing
 }
