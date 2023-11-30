@@ -14,7 +14,7 @@ body {
 
 .machine {
   max-width: 200px; /* Adjust the size as needed */
-  transition: transform 2.0s ease;
+  transition: transform 0.5s ease;
 }
 
 #generatedSentence {
@@ -28,9 +28,9 @@ color: rgb(4, 5, 5) ;
 box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); 
 transition: box-shadow 0.3s ease; 
   font-size: 18px;
-  position: relative;
+  /*position: relative;
    bottom : 160px; 
-   right : -400px
+   right : -400px*/
 }
 
 .custom-button {
@@ -47,6 +47,9 @@ color: rgb(255, 255, 255);
 
 box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); 
 transition: box-shadow 0.3s ease; 
+
+
+
 
 
 }
