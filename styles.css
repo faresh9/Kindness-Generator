@@ -22,6 +22,8 @@ body {
 
 .machine {
   max-width: 920px;
+  position: relative;
+  top : -50px 
 
 }
 
@@ -32,12 +34,14 @@ body {
 #generatedSentence {
   background-color: palevioletred;
   border: none;
-  border-radius: 5px;
+  border-radius: 50px;
   margin-top: 10px;
   color: rgb(4, 5, 5);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s ease;
-  font-size: 18px;
+  font-size: 30px;
+  position: relative;
+  top : -50px
 }
 
 .custom-button {
@@ -49,21 +53,50 @@ body {
   border-radius: 5px;
   margin-top: 10px;
   color: rgb(255, 255, 255);
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: box-shadow 0.3s ease;
+  position: relative; /* Position relative for shadow */
+  overflow: hidden; /* Hide overflow */
+  position: absolute; /* Change to absolute positioning */
+      top: 370px; /* Adjust the distance from the top */
+      left: 1200px; /* Adjust the distance from the left */
 }
 
 .custom-button::after {
   content: '';
   position: absolute;
   width: 100%;
-  height: 6px;
-  bottom: -8px;
+  height: 6px; /* Adjust the height of the shadow */
+  bottom: -8px; /* Adjust the distance of the shadow from the button */
   left: 0;
-  background: rgba(0, 0, 0, 0.2);
-  transition: height 0.3s ease;
+  background: rgba(255, 253, 253, 0.2); /* Shadow color */
+  transition: height 0.3s ease; /* Smooth transition for the height */
 }
+
+/* Hover effect for the button */
+.custom-button:hover::after {
+  height: 12px; /* Adjusted height on hover */
+}
+
 
 .custom-button:hover::after {
   height: 12px;
+}
+.centered-paragraph {
+ 
+  padding: 10px 20px;
+  font-size: 16px;
+  
+  background-image: url("4.png") ;
+  
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
+color: darkred;
+  font-weight :bolder ;
+  position: relative;
+  top : -333px ;
+  left : -1125px ;
+
+
+  
+  
 }
