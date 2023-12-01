@@ -35,19 +35,36 @@ function generateSentence() {
 
   const machineElement = document.getElementById('machine');
 
+  // Change the image source to your GIF
+  machineElement.src = 'machine.gif';
+
+  // Apply the translation animation to move the machine to the left
+  machineElement.classList.add('vibrating-element');
+
   // Apply the translation animation to move the machine to the left
   machineElement.style.transform = 'translateX(-100%)';
 
-  // Reset the translation after a short delay
+  // Reset the translation and trigger the animation after a short delay
   setTimeout(() => {
     machineElement.style.transform = 'translateX(0)';
+    machineElement.onload = () => {
+      // Start the animation when the new image has loaded
+      // You can add your animation logic here
+      typingInProgress = false; // Reset the typing status after finishing
+    };
   }, 500);
 
   // Type out the sentence letter by letter with a delay
   typeSentence(generatedSentence, sentenceElement, () => {
+    // Revert the image source to the static image when typing animation completes
+   // machineElement.src = 'machine2.png';
     typingInProgress = false; // Reset the typing status after finishing
+    machineElement.classList.remove('vibrating-element');
   });
 }
+
+// Rest of your code...
+
 
 function typeSentence(sentence, targetElement, onComplete) {
   const speed = 50; // Typing speed in milliseconds
